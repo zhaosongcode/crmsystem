@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CrmUserMapper">
+
+
+    <resultMap type="CrmUser" id="userResult">
+        <id column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="user_password" property="userPassword"/>
+        <result column="user_phone" property="phone"/>
+        <result column="user_email" property="email"/>
+        <result column="create_time" property="createTime"/>
+        <result column="updata_time" property="updataTime"/>
+        <result column="is_delete" property="isDelete"/>
+        <result column="user_department" property="userDepartment"/>
+        <result column="user_typeOfWork" property="userTypeOfWork"/>
+        <result column="user_code" property="userCode"/>
+        <result column="user_realName" property="userRealName"/>
+    </resultMap>
+
+    <!--表名 -->
+    <sql id="tableName">
+		crm_user
+	</sql>
+
+
+    <!-- 字段 -->
+    <sql id="Field">
+		user_id,
+		user_name,
+		user_password,
+		user_phone,
+		user_email,
+		create_time,
+		updata_time,
+		is_delete,
+		user_department,
+		user_typeOfWork,
+		user_code,
+		user_realName
+	</sql>
+
+    <!-- 字段值 -->
+    <sql id="FieldValue">
+		#{userId},
+		#{userName},
+		#{userPassword},
+		#{phone},
+		#{email},
+		#{createTime},
+		#{updataTime},
+		#{isDelete},
+		#{userDepartment},
+		#{userTypeOfWork},
+		#{userCode},
+		#{userRealName}
+	</sql>
+
+    <select id="getUsers" resultMap="userResult">
+        select <include refid="Field"></include> from
+        <include refid="tableName"></include>
+        where is_delete = 0
+        <if test="userRealName!=null and userRealName!=''">
+            and user_realName like CONCAT(CONCAT('%', #{userRealName}), '%')
+        </if>
+        <if test="userCode!=null and userCode!=''">
+            and user_code = #{userCode}
+        </if>
+        <if test="userDepartment!=null and userDepartment!=''">
+            and user_department = #{userDepartment}
+        </if>
+        <if test="userTypeOfWork!=null and userTypeOfWork!=''">
+            and user_typeOfWork = #{userTypeOfWork}
+        </if>
+        order by create_time desc
+    </select>
+
+
+
+</mapper>

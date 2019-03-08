@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <div th:fragment="headmenu" style="width: 100%;height: 13%;background-color: #eee;min-height: 75px">
+        <!--logou-->
+        <div style="height: 100%;float: left;width: 17%">
+            <a href="index">
+                <img th:src="@{/images/main/crm.jpg}" style="width: 100%;height: 100%"/>
+            </a>
+        </div>
+
+        <!--欢迎用户部分-->
+        <div style="float: left;height: 100%;width: 40%;padding-top: 1%;">
+            <h3 th:text="'欢迎您,'+${session.user.userName}" style="margin-left: 2%">欢迎您</h3>
+        </div>
+
+        <!--消息提醒部分-->
+        <div id="messageDiv" style="float: left;height: 100%;width: 13%;font-size: 2rem;display: none">
+            <a id="messageA" href="javascript:void(0);"><i style="margin-top: 15%;color: red" class="fa fa-bell-o"></i></a>
+            <span>有未处理消息</span>
+        </div>
+
+        <!--个人中心部分-->
+        <div style="height: 100%;width: 30%;float: right;">
+
+            <!--个人中心-->
+            <ul class="nav navbar-nav navbar-right pull-right" style="margin-right: 10%">
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle profile" data-toggle="dropdown"
+                       aria-expanded="true"><img src="../images/main/main.png" alt="user-img" class="img-circle"> </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="javascript:void(0);" onclick="toPersonalSet()"><i class="fa fa-sun-o"></i> 个人设置</a></li>
+                        <li><a href="javascript:void(0);" onclick="logout()"><i class="fa fa-sign-out"></i> 注销</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</html>

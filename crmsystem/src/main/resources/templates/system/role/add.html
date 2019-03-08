@@ -1,0 +1,62 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<script th:src="@{/js/system/role/add.js}"></script>
+<script type="text/javascript" th:inline="javascript" xmlns:th="http://www.w3.org/1999/xhtml">
+    /*<![CDATA[*/
+    /*]]>*/
+</script>
+<style>
+    .form-section{
+        color: #0b94ea;
+        margin: 30px 0px 15px 0px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+        margin-left: 10px;
+    }
+</style>
+<div class="panel-heading" style="background-color: #1bd3ff;">
+    <h3 class="panel-title" style="font-size: 15px;margin-left: 10px">系统管理——<a href="javascript:void(0);" onclick="topage('role/list')">角色管理</a>——<a href="javascript:void(0);" onclick="topage('role/add')">角色新增</a></h3>
+</div>
+
+<!--隐藏域，存储图标信息-->
+<div style="display:none;">
+</div>
+
+
+<h4 style="margin-left: 40px" class="form-section">角色信息</h4>
+<div style="margin-left: 30px">
+    <form method="post" id="addForm" autocomplete="off">
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                角色名称<span style="color: red">*</span>
+            </label>
+            <input style="background-color: #FFFFFF" type="text" id="roleName" name="roleName"
+                   class="form-control" maxlength="50" placeholder="请输入角色名称"/>
+        </div>
+        <br/><br/><br/><br/>
+        <div style="margin-left: 20px" class="row">
+            <div class="col-md-6">
+                <div class="portlet grey-salt box">
+                    <div class="portlet-title">
+                        <div class="caption" style="font-size: 14px;color: #333">
+                            菜单权限
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div id="res_tree"></div>
+                    </div>
+                </div>
+                <input name="permissionIds" id="resIds" type="hidden"/>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+<div style="width: 600px;margin-left: 30px;margin-bottom: 50px" class="form-actions">
+    <button id="saveNewRole" style="background-color: #2ae2ff" type="button" class="btn">
+        <i class="fa fa-check"></i> 保存
+    </button>
+    <button type="button" onclick="topage('role/list')" class="btn"><i class="fa fa-close"></i>取消</button>
+</div>
+
+</html>

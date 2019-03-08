@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CrmClientMapper">
+
+	<resultMap type="CrmClient" id="clientResultMap">
+		<id column="client_id" property="clientId"/>
+		<result column="user_id" property="userId"/>
+		<result column="client_name" property="clientName"/>
+		<result column="client_mobelPhone" property="clientMobelPhone"/>
+		<result column="client_email" property="clientEmail"/>
+		<result column="client_gender" property="clientGender"/>
+		<result column="client_age" property="clientAge"/>
+		<result column="client_credit" property="clientCredit"/>
+		<result column="client_type" property="clientType"/>
+		<result column="client_code" property="clientCode"/>
+	</resultMap>
+
+
+    <!--表名 -->
+    <sql id="tableName">
+		crm_client
+	</sql>
+
+
+    <!-- 字段 -->
+    <sql id="Field">
+		client_id,
+		user_id,
+		client_name,
+		client_mobelPhone,
+		client_email,
+		client_gender,
+		client_age,
+		client_credit,
+		client_type,
+		client_code
+	</sql>
+
+    <!-- 字段值 -->
+    <sql id="FieldValue">
+		#{clientId},
+		#{userId},
+		#{clientName},
+		#{clientMobelPhone},
+		#{clientEmail},
+		#{clientGender},
+		#{clientAge},
+		#{clientCredit},
+		#{clientType},
+		#{clientCode}
+	</sql>
+
+    <select id="getClients" resultMap="clientResultMap">
+        select <include refid="Field"></include> from
+        <include refid="tableName"></include>
+        where is_delete = 0
+        <if test="userId!='03be0258222e40d9a64f5c400bca11e9'">
+            and user_id = #{userId}
+        </if>
+        <if test="clientName!=null and clientName!=''">
+            and client_name LIKE CONCAT(CONCAT('%', #{clientName}), '%')
+        </if>
+        <if test="clientType!=null and clientType!=''">
+            and client_type = #{clientType}
+        </if>
+        order by client_create_time desc
+    </select>
+
+
+</mapper>

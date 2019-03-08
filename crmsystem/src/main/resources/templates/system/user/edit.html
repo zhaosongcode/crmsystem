@@ -1,0 +1,105 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<script th:src="@{/js/system/user/edit.js}"></script>
+<script type="text/javascript" th:inline="javascript" xmlns:th="http://www.w3.org/1999/xhtml">
+    /*<![CDATA[*/
+    var user = [[${user}]]
+    if(CommnUtil.notNull(user)){
+        var userDepartment = user.userDepartment;
+        if(CommnUtil.notNull(userDepartment)){
+            $("#userDepartment").val(userDepartment).trigger('change');
+        }else{
+            $("#userDepartment").val(null).trigger('change');
+        }
+
+        var userTypeOfWork = user.userTypeOfWork;
+        if(CommnUtil.notNull(userTypeOfWork)){
+            $("#userTypeOfWork").val(userTypeOfWork).trigger('change');
+        }else{
+            $("#userTypeOfWork").val(null).trigger('change');
+        }
+    }
+    /*]]>*/
+</script>
+<style>
+    .form-section{
+        color: #0b94ea;
+        margin: 30px 0px 15px 0px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+        margin-left: 10px;
+    }
+</style>
+<div class="panel-heading" style="background-color: #1bd3ff;">
+    <h3 class="panel-title" style="font-size: 15px;margin-left: 10px">系统管理——<a href="javascript:void(0);" onclick="topage('user/list')">员工管理</a>——<a href="javascript:void(0);" onclick="topage('user/editUser')">员工编辑</a></h3>
+</div>
+
+<!--隐藏域，存储图标信息-->
+<div style="display:none;">
+</div>
+
+
+<h4 style="margin-left: 30px" class="form-section">员工信息</h4>
+<div style="margin-left: 20px">
+    <form method="post" id="addForm" autocomplete="off">
+        <input type="hidden" id="userId" th:value="${user.userId}" name="userId" />
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                员工姓名<span style="color: red">*</span>
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${user.userRealName}" id="userRealName" name="userRealName"
+                   class="form-control" maxlength="50" placeholder="请输入员工姓名"/>
+        </div>
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                员工用户名<span style="color: red">*</span>
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${user.userName}" id="userName" name="userName"
+                   class="form-control" maxlength="50" placeholder="请输入员工用户名"/>
+        </div>
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                员工手机号<span style="color: red">*</span>
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${user.phone}" id="phone" name="phone"
+                   class="form-control" maxlength="50" placeholder="请输入员工手机号"/>
+        </div>
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                员工邮箱<span style="color: red">*</span>
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${user.email}" id="email" name="email"
+                   class="form-control" maxlength="50" placeholder="请输入员工邮箱"/>
+        </div>
+        <div style="height: 69px" class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                员工部门<span style="color: red">*</span>
+            </label>
+            <select id="userDepartment" name="userDepartment" class="form-control">
+                <option th:each="department : ${department}" th:text="${department.dictName}" th:value="${department.dictCode}"></option>
+            </select>
+        </div>
+        <div style="height: 69px" class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                员工职位<span style="color: red">*</span>
+            </label>
+            <select id="userTypeOfWork" name="userTypeOfWork" class="form-control">
+                <option th:each="staff : ${staff}" th:text="${staff.dictName}" th:value="${staff.dictCode}"></option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                员工描述
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${user.userDescribe}" id="userDescribe" name="userDescribe"
+                   class="form-control" maxlength="50" placeholder="请输入员工描述"/>
+        </div>
+    </form>
+</div>
+<div style="width: 600px;margin-left: 30px;margin-top: 250px;margin-bottom: 50px" class="form-actions">
+    <button id="saveNewUser" style="background-color: #2ae2ff" type="button" class="btn">
+        <i class="fa fa-check"></i> 保存
+    </button>
+    <button type="button" onclick="topage('user/list')" class="btn"><i class="fa fa-close"></i>取消</button>
+</div>
+
+</html>

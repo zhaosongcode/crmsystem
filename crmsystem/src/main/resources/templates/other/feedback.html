@@ -1,0 +1,77 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<script th:src="@{/js/other/feedback/feedback.js}"></script>
+<!--/*ueditor start */-->
+<script th:src="@{/js/ueditor/ueditor.config.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/js/ueditor/ueditor.all.min.js}" type="text/javascript" charset="utf-8"> </script>
+<!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
+<!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
+<script th:src="@{/js/ueditor/lang/zh-cn/zh-cn.js}" type="text/javascript" charset="utf-8"></script>
+<!--<script th:src="@{/plugins/ueditor/ueditor.js}" type="text/javascript" charset="utf-8" src="../../../static/plugins/ueditor/ueditor.js"></script>-->
+<!--/* ueditor end */-->
+﻿<script type="text/javascript">
+
+    //实例化编辑器
+    //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+    var feedbackDescEntity = UE.getEditor('editor');
+
+</script>
+<script type="text/javascript" th:inline="javascript" xmlns:th="http://www.w3.org/1999/xhtml">
+    /*<![CDATA[*/
+    /*]]>*/
+</script>
+<style>
+    .form-section{
+        color: #0b94ea;
+        margin: 30px 0px 15px 0px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+        margin-left: 10px;
+    }
+</style>
+<div class="panel-heading" style="background-color: #1bd3ff;width: 100%;margin-top: -1.7%">
+    <h3 class="panel-title" style="font-size: 15px;margin-left: 10px">其他管理——<a href="javascript:void(0);" onclick="topage('other/feedback')">意见反馈</a></h3>
+</div>
+
+<!--隐藏域，存储图标信息-->
+<div style="display:none;">
+</div>
+
+<!--邮件布局-->
+<h4 style="margin-left: 40px" class="form-section">您的反馈我们将尽快处理，请关注邮箱的最新动态</h4>
+<div style="margin-top: 20px" class="row p-b-10 m-l-10">
+    <form id="feedbackForm" role="form">
+        <input type="hidden" id="feedbackUserId" name="userId" />
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                反馈主题<span style="color: red">*</span>
+            </label>
+            <input style="background-color: #FFFFFF;width: 100%" type="text" id="feedbackSubject" name="feedbackSubject"
+                   class="form-control" maxlength="50" placeholder="请输入反馈主题信息"/>
+        </div>
+        <br/><br/><br/><br/>
+        <div style="height: 69px" class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                反馈类型<span style="color: red">*</span>
+            </label>
+            <select id="feedbackType" name="feedbackType" class="form-control">
+                <option th:each="feedbackType : ${feedbackTypes}" th:value="${feedbackType.dictCode}" th:text="${feedbackType.dictName}"></option>
+            </select>
+        </div>
+
+        <div class="col-md-12">
+            <label style="margin-top: 10px;">
+                反馈描述<span style="color: red">*</span>
+            </label>
+            <span><script id="editor" type="text/plain" style="width: 100%;"></script></span>
+        </div>
+        <input type="hidden" id="feedbackDesc" name="feedbackDesc" />
+
+        <div style="margin-top:20px;margin-left:45%" class="col-md-12">
+            <button style="margin-left: 15px" onclick="sendFeedback()" type="button" class="btn btn-success waves-effect m-l-10">发送
+            </button>
+        </div>
+    </form>
+</div>
+
+
+</html>

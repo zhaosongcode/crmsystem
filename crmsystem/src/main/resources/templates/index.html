@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" style="padding: 0;margin: 0">
+<script type="text/javascript" th:inline="javascript" xmlns:th="http://www.w3.org/1999/xhtml">
+    /*<![CDATA[*/
+    var user = [[${session.user}]]
+    /*]]>*/
+</script>
+<head th:replace="common/head :: head"></head>
+<style>
+    .menuParten{
+        list-style:none
+    }
+    .chimenu{
+        list-style:none
+    }
+    #box::-webkit-scrollbar {
+        display: none;
+    }
+    html,body{
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow-y: auto;
+    }
+</style>
+<body class="fixed-left">
+<!--菜单与头部分-->
+<!--<div id="menuAndHead" th:replace="common/menu :: menu"></div>-->
+<div th:replace="common/headmenu::headmenu">
+</div>
+
+<!--菜单部分-->
+<div th:replace="common/menu::menu">
+</div>
+
+<!--实际内容部分-->
+<div id="contentdiv" style="width: 83%;height:87%;float: left;overflow-y : auto">
+</div>
+<!--隐藏域-->
+<div style="display:none;">
+    <input id="currentUserId" th:value="${session.user.userId}"/>
+</div>
+</body>
+<script th:src="@{/plugins/jquery/3.2.1/jquery.min.js}"></script>
+<script th:src="@{/js/common/common.js}"></script>
+<script th:src="@{/plugins/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/layer/layer.js}"></script>
+<script th:src="@{/js/system/index.js}"></script>
+<script th:src="@{/js/system/head.js}"></script>
+<script th:src="@{/js/jquery/jquery.form.js}"></script>
+<script th:src="@{/js/Highcharts-6.2.0/code/highcharts.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script th:src="@{/plugins/jstree/dist/jstree.js}"></script>
+</html>

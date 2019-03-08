@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- 
+    <properties resource="application.properties"/>
+	 -->
+	<properties resource="jdbc.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+		
+		<!-- TODO -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.crm.graduation.crmsystem.model.utils.MyMapper"/>
+        </plugin>
+		
+		<!-- properties
+		 -->
+		<jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+                        connectionURL="${spring.datasource.url}"
+                        userId="${spring.datasource.username}"
+                        password="${spring.datasource.password}">
+        </jdbcConnection>
+		<!-- local
+		<jdbcConnection 
+			driverClass="com.mysql.jdbc.Driver" 
+			connectionURL="jdbc:mysql://localhost:3306/djkmanager" 
+			userId="root" 
+			password="rootadmin">
+		</jdbcConnection>
+		 -->
+		<!-- server 
+		<jdbcConnection 
+			driverClass="com.mysql.jdbc.Driver" 
+			connectionURL="jdbc:mysql://10.31.23.180:3306/djkmanager" 
+			userId="root" 
+			password="Bighealth@123">
+		</jdbcConnection>
+		-->
+
+        <javaModelGenerator targetPackage="com.generator.model" targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="com.generator.mapperXml" targetProject="src/main/java"/>
+
+        <javaClientGenerator targetPackage="com.generator.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+		
+		<!-- 全匹配
+        <table tableName="%">
+		 -->
+		<!-- 
+			bh_micro_supplier
+			bh_micro_serv
+			bh_sys_%
+			bh_sys_product_userinfo_collect
+			bh_sys_userinfo_collect
+			bh_sys_serv_area
+			bh_serv_log_operate
+			 -->
+		<!--<table tableName="crm_user">
+            mysql 配置
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            oracle 配置
+            <generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>
+        </table>-->
+        <table tableName="crm_message"></table>
+        
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="menu" style="width: 17%;height: 87%;float: left;background-color: #2f353f">
+    <ul style="font-size: 1.7rem;">
+        <li style="margin-top: 15%;margin-bottom: 6%" class="menuParten">
+            <a style="color: #F9FFEF;" href="index">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span> 概览 </span>
+            </a>
+        </li>
+
+
+        <li style="margin-top: 15%" class="menuParten"   th:each="menu:${session.menus.permissions}">
+            <a style="color: #F9FFEF;display: block;" href="javascript:void(0)" nav-n="test">
+                <i th:class="${menu.permissionIcon}" class="fa fa-cubes"></i>
+                <span th:text="${menu.permissionName}"> 菜单管理 </span>
+                <span>
+                                <i class="fa fa-angle-left"></i>
+                            </span>
+            </a>
+            <ul style="margin-top: 14%;display: none" class="menuChild">
+                <li style="margin-top: 14%" class="chimenu" th:each="chi:${menu.childPermission}">
+                    <a style="color: #F9FFEF;display: block" th:onclick="topage([[${chi.permissionUrl}]])" href="javascript:void(0);"><i th:class="${chi.permissionIcon}" class="fa fa-comments" aria-hidden="true"></i><span th:text="${chi.permissionName}"> 评论管理 </span></a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</html>

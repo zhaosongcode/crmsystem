@@ -1,0 +1,199 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<script th:src="@{/js/client/edit.js}"></script>
+<script type="text/javascript" th:inline="javascript" xmlns:th="http://www.w3.org/1999/xhtml">
+    /*<![CDATA[*/
+    var address = [[${address}]];
+    var clientType = [[${client.clientType}]]
+    if(CommnUtil.notNull(clientType)){
+        $("#clientType").val(clientType).trigger("change");
+    }else{
+        $("#clientType").val(null).trigger("change");
+    }
+
+    var clientGend = [[${client.clientGender}]]
+    if(CommnUtil.notNull(clientGend)){
+        $("#clientGender").val(clientGend).trigger("change");
+    }else{
+        $("#clientGender").val(null).trigger("change");
+    }
+
+    var clientProvince = [[${client.province}]]
+    if(CommnUtil.notNull(clientProvince)){
+        $("#clientProvince").val(clientProvince).trigger("change");
+    }else{
+        $("#clientProvince").val(null).trigger("change");
+    }
+
+    var clientCity = [[${client.city}]]
+    if(CommnUtil.notNull(clientCity)){
+        $("#clientCity").val(clientCity).trigger("change");
+    }else{
+        $("#clientCity").val(null).trigger("change");
+    }
+    var clientCountry = [[${client.country}]]
+    if(CommnUtil.notNull(clientCountry)){
+        $("#clientCountry").val(clientCountry).trigger("change");
+    }else{
+        $("#clientCountry").val(null).trigger("change");
+    }
+
+    var clientIcon = [[${client.iconName}]]
+    if(CommnUtil.notNull(clientCountry)){
+        $("#imgClientIcon").attr("src","http://localhost:8080/crmsystem/uploadImages/"+clientIcon);
+        $("#seledIconName").val(clientIcon)
+    }
+    /*]]>*/
+</script>
+<style>
+    .form-section{
+        color: #0b94ea;
+        margin: 30px 0px 15px 0px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+        margin-left: 10px;
+    }
+</style>
+<div class="panel-heading" style="background-color: #1bd3ff;">
+    <h3 class="panel-title" style="font-size: 15px;margin-left: 10px">客户管理——<a href="javascript:void(0);" onclick="topage('client/list')">我的客户</a>——<a href="javascript:void(0);" th:onclick="toedit([[${client.clientId}]])">客户编辑</a></h3>
+</div>
+
+<!--隐藏域，存储图标信息-->
+<div style="display:none;">
+</div>
+
+
+<h4 style="margin-left: 30px" class="form-section">用户信息</h4>
+<div style="margin-left: 20px">
+    <form method="post" id="editForm" autocomplete="off" enctype="multipart/form-data">
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                客户姓名<span style="color: red">*</span>
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${client.clientName}" id="clientName" name="clientName"
+                   class="form-control" maxlength="50" placeholder="请输入客户姓名"/>
+        </div>
+        <div style="height: 69px" class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                客户性别<span style="color: red">*</span>
+            </label>
+            <select id="clientGender" name="clientGender" class="form-control">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                客户手机<span style="color: red">*</span>
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${client.clientMobelPhone}" id="clientMobelPhone" name="clientMobelPhone"
+                   class="form-control" maxlength="50" placeholder="请输入客户手机"/>
+        </div>
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                客户固定电话
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${client.clientPhone}" id="clientPhone" name="clientPhone"
+                   class="form-control" maxlength="50" placeholder="请输入客户固定电话"/>
+        </div>
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                客户紧急电话
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${client.clientEnePhone}" id="clientEnePhone" name="clientEnePhone"
+                   class="form-control" maxlength="50" placeholder="请输入客户紧急电话"/>
+        </div>
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                客户生日
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${client.clientBirthday}" id="clientBirthday" name="clientBirthday"
+                   class="form-control" maxlength="50" placeholder="请输入客户生日(xxxx-xx-xx)"/>
+        </div>
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                客户邮箱<span style="color: red">*</span>
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${client.clientEmail}" id="clientEmail" name="clientEmail"
+                   class="form-control" maxlength="50" placeholder="请输入客户邮箱"/>
+        </div>
+        <div class="col-md-6">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                客户信誉积分
+            </label>
+            <input style="background-color: #FFFFFF" type="text" th:value="${client.clientCredit}" id="clientCredit" name="clientCredit"
+                   class="form-control" maxlength="50" placeholder="请输入客户信誉积分"/>
+        </div>
+        <div id="addressDiv">
+            <div style="height: 69px;width: 200px;" class="col-md-6">
+                <label style="margin-top: 10px;margin-left: 5px" >
+                    客户所在省份<span style="color: red">*</span>
+                </label>
+                <select id="clientProvince" name="clientProvince" class="form-control">
+                    <option th:each="province : ${address}" th:value="${province.provinceCode}" th:text="${province.provinceName}"></option>
+                </select>
+                <input id="clientProvinceName" type="hidden" name="province" />
+            </div>
+            <div style="height: 69px;width: 200px;" class="col-md-6">
+                <label style="margin-top: 10px;margin-left: 5px" >
+                    客户所在城市<span style="color: red">*</span>
+                </label>
+                <select id="clientCity" name="clientCity" class="form-control">
+
+                </select>
+                <input id="clientCityName" type="hidden" name="city" />
+            </div>
+            <div style="height: 69px;width: 200px;" class="col-md-6">
+                <label style="margin-top: 10px;margin-left: 5px" >
+                    客户所在县市<span style="color: red">*</span>
+                </label>
+                <select id="clientCountry" name="clientCountry" class="form-control">
+                </select>
+                <input id="clientCountryName" type="hidden" name="country" />
+            </div>
+            <div style="width: 500px" class="col-md-6">
+                <label style="margin-top: 10px;margin-left: 5px" >
+                    客户详细住址<span style="color: red">*</span>
+                </label>
+                <input style="background-color: #FFFFFF;" type="text" th:value="${client.detailed}" id="clientDetail" name="detailed"
+                       class="form-control" maxlength="100" placeholder="请输入客户详细住址"/>
+            </div>
+            <div style="height: 69px" class="col-md-6">
+                <label style="margin-top: 10px;margin-left: 5px" >
+                    客户类型<span style="color: red">*</span>
+                </label>
+                <select id="clientType" name="clientType" class="form-control">
+                    <option th:each="type:${clientType}" th:value="${type.dictCode}" th:text="${type.dictName}"></option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label style="margin-top: 10px;margin-left: 5px" >
+                    客户年龄<span style="color: red">*</span>
+                </label>
+                <input style="background-color: #FFFFFF" type="text" th:value="${client.clientAge}" id="clientAge" name="clientAge"
+                       class="form-control" maxlength="50" placeholder="请输入客户年龄"/>
+            </div>
+            <div class="col-md-12">
+                <label class="control-label flex" style="margin-top: 10px;">
+                    上传展示图标<span style="color: red">*</span>
+                </label>
+                <div class="">
+                    <img th:src="@{/images/main/shangchuan.png}" id="imgClientIcon"
+                         width="35px" height="35px"/>
+                    <input type="file" id="seledIcon" name="seledIcon" style="display:none"/>
+                    <input type="hidden" id="seledIconName" name="iconName"/>
+                    <input type="hidden" id="addUserId" name="userId"/>
+                    <input type="hidden" id="clientIdHidden" th:value="${client.clientId}" name="clientId"/>
+                    <input type="hidden" id="addressId" th:value="${client.addressId}" name="addressId"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div style="width: 600px;margin-left: 30px;margin-top: 520px;margin-bottom: 50px" class="form-actions">
+    <button id="saveNewClient" style="background-color: #2ae2ff" type="button" class="btn">
+        <i class="fa fa-check"></i> 保存
+    </button>
+    <button type="button" onclick="topage('client/list')" class="btn"><i class="fa fa-close"></i>取消</button>
+</div>
+
+</html>

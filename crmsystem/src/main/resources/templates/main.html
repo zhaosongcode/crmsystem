@@ -1,0 +1,33 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div class="panel-heading" style="background-color: #1bd3ff;width: 100%">
+    <h3 class="panel-title" style="font-size: 15px;margin-left: 10px">概览</h3>
+</div>
+
+<div style="width: 50%;float: left">
+    <div id="histogramAge"></div>
+</div>
+<div style="width: 50%;float: right">
+    <div id="histogramAddress"></div>
+</div>
+<div>
+    <div id="histogramClient"></div>
+</div>
+<!--隐藏域，存储图标信息-->
+<div style="display:none;">
+    <input id="clientAge20" th:value="${listAge[0]}">
+    <input id="clientAge2040" th:value="${listAge[1]}">
+    <input id="clientAge40" th:value="${listAge[2]}">
+
+    <input id="clientAdd1" th:value="${listAddress[0]}">
+    <input id="clientAdd11" th:value="${listAddress[1]}">
+    <input id="clientAdd2" th:value="${listAddress[2]}">
+    <input id="clientAdd3" th:value="${listAddress[3]}">
+    <input id="clientAdd4" th:value="${listAddress[4]}">
+
+    <div style="display: none" th:each="par,parStatu : ${listClients}">
+        <input th:id="${parStatu.index}" th:value="${par}">
+    </div>
+</div>
+
+<script th:src="@{/js/system/main.js}"></script>
+</html>

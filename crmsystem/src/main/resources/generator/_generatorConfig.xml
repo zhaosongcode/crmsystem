@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- 
+    <properties resource="application.properties"/>
+	 -->
+	<properties resource="jdbc.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+		
+		<!-- TODO -->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.springboot.util.MyMapper"/>
+        </plugin>
+		
+		<!-- properties
+		 -->
+		<jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+                        connectionURL="${spring.datasource.url}"
+                        userId="${spring.datasource.username}"
+                        password="${spring.datasource.password}">
+        </jdbcConnection>
+		<!-- local
+		<jdbcConnection 
+			driverClass="com.mysql.jdbc.Driver" 
+			connectionURL="jdbc:mysql://localhost:3306/djkmanager" 
+			userId="root" 
+			password="rootadmin">
+		</jdbcConnection>
+		 -->
+		<!-- server 
+		<jdbcConnection 
+			driverClass="com.mysql.jdbc.Driver" 
+			connectionURL="jdbc:mysql://10.31.23.180:3306/djkmanager" 
+			userId="root" 
+			password="Bighealth@123">
+		</jdbcConnection>
+		-->
+
+        <javaModelGenerator targetPackage="tk.mybatis.springboot.model" targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="tk.mybatis.springboot.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+		
+		<!-- 
+        <table tableName="%">
+		 -->
+		<!-- 
+			bh_micro_supplier
+			bh_micro_serv -->
+		<table tableName="bh_micro_serv">
+            <!--mysql 配置
+            -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+            <!--oracle 配置-->
+            <!--<generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>
+            -->
+        </table>
+        
+        <!-- 要生成那些表(更改 tableName 和 domainObjectName 就可以)，这里配置的是生成Example文件，若是要不生成那么将 example 相关的由 true 改为 false 即可 -->
+        <!-- 
+		<table tableName="article_t" domainObjectName="InverseArticle" 
+				schema="root" 
+				enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+         -->
+        
+        <!-- 
+        <table tableName="serv" domainObjectName="InverseServ" 
+				schema="root" 
+				enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+         -->
+			<!-- 
+			<property name="ignoreQualifiersAtRuntime" value="true" />
+			 -->
+			<!-- 
+			<columnOverride column="validity_time" jdbcType="TIMESTAMP"/>
+			<columnOverride column="modify_date" jdbcType="TIMESTAMP"/>
+			 -->
+			<!-- 
+			<property name="useActualColumnNames" value="false"/>
+		</table>
+			 -->
+        
+    </context>
+</generatorConfiguration>

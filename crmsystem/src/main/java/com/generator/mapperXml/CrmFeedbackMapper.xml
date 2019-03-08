@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.generator.mapper.CrmFeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.generator.model.CrmFeedback" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="feedback_id" property="feedbackId" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="solve_state" property="solveState" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="feedback_type" property="feedbackType" jdbcType="VARCHAR" />
+    <result column="feedback_subject" property="feedbackSubject" jdbcType="VARCHAR" />
+    <result column="feedback_desc" property="feedbackDesc" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

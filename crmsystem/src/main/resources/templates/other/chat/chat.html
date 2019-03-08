@@ -1,0 +1,89 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript" th:src="@{/js/scoket/sockjs.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/scoket/stomp.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/other/chat/chat.js}"></script>
+<!--<script type="text/javascript" th:src="@{/js/other/chat/chat.js}"></script>-->
+<style>
+    .form-section{
+        color: #0b94ea;
+        margin: 15px 0px 15px 0px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+        margin-left: 10px;
+    }
+    ul li{
+        list-style: none;
+    }
+    .messClass{
+        display: none;
+    }
+</style>
+<script type="text/javascript" th:inline="javascript" xmlns:th="http://www.w3.org/1999/xhtml">
+    /*<![CDATA[*/
+    function getUnRM() {
+        var unReadMessages = [[${session.unReadMessages}]]
+        return unReadMessages;
+    }
+    var user = [[${session.user}]]
+    /*]]>*/
+</script>
+<input type="hidden" id="toUserId">
+<input type="hidden" id="userNameaa">
+<div class="panel-heading" style="background-color: #1bd3ff;">
+    <h3 class="panel-title" style="font-size: 15px;margin-left: 10px">其他管理——<a href="javascript:void(0);" onclick="topage('other/onlineconsultant')">在线咨询</a></h3>
+</div>
+
+<h4 style="margin-left: 3%" class="form-section">在线咨询</h4>
+
+<!--左侧联系人部分-->
+<div style="background-color: white;float: left;margin-left: 3%;width: 20%;height: 300px;margin-top: 1.9%">
+    <ul>
+        <li style="margin-bottom: 3%">
+            <ul>联系人管理</ul>
+        </li>
+
+        <li style="margin-bottom: 5%" th:each="contact:${contacts}" class="menuPartens">
+            <a href="javascript:void(0)" class="menpeo">
+                <i></i>
+                <span th:text="${contact.apartmentName}"> 联系人管理 </span>
+                <span>
+                                <i class="fa fa-angle-left"></i>
+                            </span>
+                <span style="color: blue" th:text="${contact.peoCount}"></span><i th:id="${contact.apartmentId}" class="fa fa-circle apaeach"style="color: red;display: none;margin-left: 1%"></i>
+            </a>
+            <ul class="menuChild" style="display: none">
+                <li style="margin-bottom: 4%;margin-top: 4%" th:each="chi:${contact.users}">
+                    <a th:title="${chi.userDescribe}" href="javascript:void(0);" th:onclick="changeUser([[${chi.userId}]],[[${chi.userName}]],[[${contact.apartmentId}]])"><i class="fa fa-child" aria-hidden="true"></i><span th:text="${chi.userName}"> xxx </span></a><i th:id="${chi.userId}" class="fa fa-circle"style="color: red;display: none;margin-left: 1%"></i><i th:class="${contact.apartmentId}"></i>
+                </li>
+            </ul>
+        </li >
+
+    </ul>
+</div>
+
+<div align="center" class="messClass" style="width: 55%;margin-left: 25%;height: 20px;overflow: hidden">
+    <label id="useNam">您正在和xxx聊天</label>
+</div>
+<div id="chatMainIndex" class="messClass" style="background-image: url('../images/chat/charBackground.jpg');width: 55%;height: 350px;background-color: #d9ffc1;margin-left: 25%;overflow: auto">
+
+
+    <!--加载历史消息-->
+    <div style="margin-bottom: 2%;height: 25px;margin-top: 2%">
+        <div style="float: left;width: 40%;overflow: hidden;height: 100%">-----------------------------------------------</div>
+        <div align="center" style="width: 20%;float: left">
+            <a onclick="getMoreRecord()" href="javascript:void(0)">点击加载历史消息</a>
+        </div>
+        <div style="float: right;width: 40%;overflow: hidden;height: 100%">------------------------------------------------</div>
+    </div>
+
+    <!--消息内容部分-->
+    <div id="messageMain" class="">
+        <input type="hidden" id="messageCount" value="10">
+    </div>
+</div>
+<div class="messClass" style="width: 55%;margin-left: 25%">
+    <input id="messageContent" style="width: 80%;float: left" class="form-control" type="text" placeholder="请输入您要发送的内容" />
+    <button id="sendBtn" class="btn" onclick="sendMessage()" style="width: 20%;">发送</button>
+</div>
+
+</html>
