@@ -1,7 +1,6 @@
 $(function () {
     initClientAge();
     initClientAddress();
-    initHistogram();
 });
 
 function initClientAge() {
@@ -119,7 +118,7 @@ function initClientAddress() {
 }
 
 /*曲线图*/
-function initGraph() {
+/*function initGraph() {
     var title = {
         text: '每月平均温度'
     };
@@ -161,9 +160,10 @@ function initGraph() {
     json.series = series;
     json.plotOptions = plotOptions;
     $('#histogramGrapsh').highcharts(json);
-}
+}*/
 
 /*柱状图*/
+/*
 function initHistogram() {
     var chart = {
         type: 'column'
@@ -221,4 +221,4 @@ function initHistogram() {
     json.plotOptions = plotOptions;
     json.credits = credits;
     $('#histogramClient').highcharts(json);
-}
+}*/

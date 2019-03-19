@@ -154,9 +154,9 @@ function createWebScoket(){
         //服务器地址
         //websocket = new WebSocket("ws://39.96.47.197:8080/crmsystem/websocket?userId="+userId);
         //本地测试地址
-        websocket = new WebSocket("ws://localhost:8080/crmsystem/websocket?userId="+userId);
+        websocket = new WebSocket("ws://localhost:8001/crmsystem/websocket?userId="+userId);
         //局域网测试
-        //websocket = new WebSocket("ws://172.20.10.5:8080/crmsystem/websocket?userId="+userId);
+        //websocket = new WebSocket("ws://106.13.115.228:8001/crmsystem/websocket?userId="+userId);
     }
     else{
         alert('不支持webscorket!')
@@ -227,4 +227,72 @@ function topage(url) {
 function scoBot() {
     var div = $("#chatMainIndex");
     div[0].scrollTop = div[0].scrollHeight;
+}
+
+//初始化表格
+function initTable() {
+    var table = $("#table1")
+    table.DataTable({
+        "destroy": true,
+        "bLengthChange": false,
+        "language": {
+            "aria": {
+                "sortAscending": ": activate to sort column ascending",
+                "sortDescending": ": activate to sort column descending"
+            },
+            "emptyTable": "没有相关记录！",
+            "info": "显示 _START_ 到 _END_ 总共 _TOTAL_ 条记录",
+            "infoEmpty": "无记录！",
+            "infoFiltered": "(过滤1 from _MAX_ 条记录)",
+            "lengthMenu": "展示条数  _MENU_",
+            "search": "字典名称:",
+            "zeroRecords": "无记录！",
+            "paginate": {
+                "previous": "上一页",
+                "next": "下一页",
+                "last": "Last",
+                "first": "First"
+            }
+        },
+
+        "ordering": false, //禁用排序
+        "searching":false, //禁用查询
+        "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
+
+        "lengthMenu": [
+            [5,10, 15, 20, -1],
+            [5,10, 15, 20, "All"] // change per page values here
+        ],
+        // set the initial value
+        "pageLength": 5    ,
+        /*"pagingType": "bootstrap_full_number",*/
+        "columnDefs": [
+            {
+                "searchable": false,
+                "targets": [0]
+            }
+        ]
+    });
+    table.find('.group-checkable').change(function () {
+        var set = jQuery(this).attr("data-set");
+        var checked = jQuery(this).is(":checked");
+        jQuery(set).each(function () {
+            if (checked) {
+                $(this).prop("checked", true);
+                $(this).parents('tr').addClass("active");
+            } else {
+                $(this).prop("checked", false);
+                $(this).parents('tr').removeClass("active");
+            }
+        });
+    });
+
+    table.on('change', 'tbody tr .checkboxes', function () {
+        $(this).parents('tr').toggleClass("active");
+    });
+
+    table.on('dblclick', 'tbody tr', function () {
+        var clientId = $(this).find("input.checkboxes[name='selectedIds']").val();
+        toDetail(clientId);
+    });
 }

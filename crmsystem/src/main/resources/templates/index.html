@@ -21,21 +21,23 @@
         height: 100%;
         margin: 0px;
         padding: 0px;
-        overflow-y: auto;
+    }
+    body{
+        background-color: #ebeff8;
     }
 </style>
 <body class="fixed-left">
 <!--菜单与头部分-->
 <!--<div id="menuAndHead" th:replace="common/menu :: menu"></div>-->
-<div th:replace="common/headmenu::headmenu">
+<div class="row" th:replace="common/headmenu::headmenu">
 </div>
 
 <!--菜单部分-->
-<div th:replace="common/menu::menu">
+<div class="col-md-2" th:replace="common/menu::menu">
 </div>
 
 <!--实际内容部分-->
-<div id="contentdiv" style="width: 83%;height:87%;float: left;overflow-y : auto">
+<div id="contentdiv" class="col-md-10">
 </div>
 <!--隐藏域-->
 <div style="display:none;">

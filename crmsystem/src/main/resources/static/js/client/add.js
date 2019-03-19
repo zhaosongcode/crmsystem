@@ -141,7 +141,7 @@ $("#seledIcon").on("change", function () {
             if (data.code == "0") {
                 // 上传成功data为图片路径
                 var clientIcon = data.obj;
-                var imgClientIcon = 'http://localhost:8080/crmsystem/upload/' + clientIcon;
+                var imgClientIcon = 'http://localhost:8001/crmsystem/upload/' + clientIcon;
                 $('#imgClientIcon').attr('src', imgClientIcon);
                 $("#seledIconName").val(clientIcon)
             } else if (data.obj == "fileIsEmpty") {

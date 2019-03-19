@@ -34,8 +34,8 @@
         margin-left: 10px;
     }
 </style>
-<div class="panel-heading" style="background-color: #1bd3ff;">
-    <h3 class="panel-title" style="font-size: 15px;margin-left: 1%">订单管理——<a href="javascript:void(0);" onclick="topage('order/list')">我的订单</a>——<a href="javascript:void(0);" th:onclick="toEdit([[${order.orderId}]])">订单编辑</a></h3>
+<div class="col-md-12" style="background-color: #1bd3ff;padding-left: 1%;margin-top: 1%">
+    <h3>订单管理——<a href="javascript:void(0);" onclick="topage('order/list')">我的订单</a>——<a href="javascript:void(0);" th:onclick="toEdit([[${order.orderId}]])">订单编辑</a></h3>
 </div>
 
 <!--隐藏域，存储图标信息-->
@@ -43,11 +43,13 @@
 </div>
 
 
-<h4 style="margin-left: 3%" class="form-section">订单信息</h4>
-<div style="margin-left: 2%">
+<div class="col-md-12" style="background-color: #4be4c5;margin-top: 2%">
+    <h4>订单信息</h4>
+</div>
+<div class="col-md-12" style="background-color: white">
     <form method="post" id="addForm" autocomplete="off">
         <input type="hidden" id="orderId" name="orderId" th:value="${order.orderId}" />
-        <div class="col-md-6">
+        <div class="col-md-6" style="padding-bottom: 1%">
             <label style="margin-top: 10px;margin-left: 5px" >
                 客户姓名
             </label>
@@ -55,7 +57,7 @@
                 <option th:each="oc : ${orCl}" th:text="${oc.clientName}" th:value="${oc.clientId}"></option>
             </select>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="padding-bottom: 1%">
             <label style="margin-top: 10px;margin-left: 5px" >
                 订单类型
             </label>
@@ -63,7 +65,7 @@
                 <option th:each="tp : ${type}" th:text="${tp.dictName}" th:value="${tp.dictCode}"></option>
             </select>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="padding-bottom: 1%">
             <label style="margin-top: 10px;margin-left: 5px" >
                 订单状态
             </label>
@@ -73,7 +75,7 @@
         </div>
     </form>
 </div>
-<div style="width: 20%;margin-left: 3%;margin-top: 15%;margin-bottom: 5%" class="form-actions">
+<div class="col-md-12" style="padding: 0;margin-top: 1%">
     <button id="saveNewUser" style="background-color: #2ae2ff" type="button" class="btn">
         <i class="fa fa-check"></i> 保存
     </button>

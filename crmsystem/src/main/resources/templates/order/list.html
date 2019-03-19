@@ -25,56 +25,58 @@
     }
     /*]]>*/
 </script>
-<div class="panel-heading" style="background-color: #1bd3ff;">
-    <h3 class="panel-title" style="font-size: 15px;margin-left: 10px">订单管理——<a href="javascript:void(0);" onclick="topage('order/list')">我的订单</a></h3>
+<div class="col-md-12" style="background-color: #1bd3ff;padding-left: 1%;margin-top: 1%">
+    <h3>订单管理——<a href="javascript:void(0);" onclick="topage('order/list')">我的订单</a></h3>
 </div>
 
 <!--隐藏域，存储图标信息-->
 <div style="display:none;">
 </div>
 
-<div style="margin-top: 20px" class="row p-b-10 m-l-10">
-    <form id="seFrom" class="form-inline" role="form">
+<div class="col-md-12" style="background-color: #4be4c5;margin-top: 2%">
+    <h4>筛选查询</h4>
+</div>
+<div class="col-md-12" style="background-color: white;padding-top: 1%;padding-bottom: 1%">
+    <form id="seFrom" role="form">
         <input type="hidden" name="userId" th:value="${order.userId}" />
-        <div style="margin-left: 10px;float: left" class="form-group">
+        <div class="col-md-6">
             <label>请输入客户名称：</label>
-            <input style="width: 200px" maxlength="100" id="clientName" th:value="${order.clientName}" name="clientName" type="text" class="form-control" placeholder="客户名称">
+            <input id="clientName" th:value="${order.clientName}" name="clientName" type="text" class="form-control" placeholder="客户名称">
         </div>
-        <div style="float: left;margin-top: 5px;margin-left: 35px">
+        <div class="col-md-6" style="padding-bottom: 1%">
             <label>请选择订单类型：</label>
-            <select id="orderType" name="orderType" style="width: 150px" class="form-control">
+            <select id="orderType" name="orderType" class="form-control">
                 <option th:each="tp : ${type}" th:text="${tp.dictName}" th:value="${tp.dictCode}"></option>
             </select>
         </div>
-        <div style="float: left;margin-top: 5px;margin-left: 50px">
+        <div class="col-md-6" style="padding-bottom: 1%">
             <label>请选择订单状态：</label>
-            <select id="orderStatus" name="orderStatus" style="width: 150px" class="form-control">
+            <select id="orderStatus" name="orderStatus" class="form-control">
                 <option th:each="su : ${status}" th:text="${su.dictName}" th:value="${su.dictCode}"></option>
             </select>
         </div>
 
+        <div class="col-md-6" style="margin-top: 1.5%">
         <button style="margin-left: 15px" onclick="selectByExample()" type="button" class="btn btn-success waves-effect waves-light m-l-10">查询
         </button>
         <button style="margin-left: 15px" onclick="reSetSeacrch()" type="button" class="btn btn-success waves-effect waves-light m-l-10">重置
         </button>
+        </div>
     </form>
 </div>
 
-<div style="margin-left: 10px;margin-bottom: 20px" class="row">
-    <div class="col-md-6">
-        <div class="btn-group">
-
-            <button style="background-color: #ff5232" class="btn" onclick="batchDelete()">
-                <span class="ladda-label">
-                    <i class="fa fa-times" aria-hidden="true"></i>删除
-                </span>
-            </button>
-        </div>
-    </div>
-    <div class="col-md-6"></div>
+<div class="col-md-12" style="margin-top: 1%;padding: 0;margin-bottom: 1%">
+    <button style="background-color: #ff5232" class="btn" onclick="batchDelete()">
+        <span class="ladda-label">
+            <i class="fa fa-times" aria-hidden="true"></i>删除
+        </span>
+    </button>
 </div>
 
-<div id="tableMessage" style="margin-left: 20px;margin-right: 10px;width: 1100px;display: none" class="table-responsive">
+<div class="col-md-12" style="background-color: #4be4c5">
+    <h4>数据列表</h4>
+</div>
+<div id="tableMessage" style="overflow-x: hidden;padding: 0" class="col-md-12 table-responsive">
     <div class="portlet-body">
         <div class="table-toolbar">
             <div class="row">

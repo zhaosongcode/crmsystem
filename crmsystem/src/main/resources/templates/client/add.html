@@ -14,8 +14,8 @@
         margin-left: 10px;
     }
 </style>
-<div class="panel-heading" style="background-color: #1bd3ff;">
-    <h3 class="panel-title" style="font-size: 15px;margin-left: 10px">客户管理——<a href="javascript:void(0);" onclick="topage('client/list')">我的客户</a>——<a href="javascript:void(0);" onclick="topage('client/add')">客户新增</a></h3>
+<div class="col-md-12" style="background-color: #1bd3ff;padding-left: 1%;margin-top: 1%">
+    <h3>客户管理——<a href="javascript:void(0);" onclick="topage('client/list')">我的客户</a>——<a href="javascript:void(0);" onclick="topage('client/add')">客户新增</a></h3>
 </div>
 
 <!--隐藏域，存储图标信息-->
@@ -23,8 +23,10 @@
 </div>
 
 
-<h4 style="margin-left: 30px" class="form-section">用户信息</h4>
-<div style="margin-left: 20px">
+<div class="col-md-12" style="background-color: #4be4c5;margin-top: 2%">
+    <h4>用户信息</h4>
+</div>
+<div class="col-md-12" style="background-color: white;padding-bottom: 1%">
     <form method="post" id="addForm" autocomplete="off" enctype="multipart/form-data">
     <div class="col-md-6">
         <label style="margin-top: 10px;margin-left: 5px" >
@@ -33,7 +35,7 @@
         <input style="background-color: #FFFFFF" type="text" id="clientName" name="clientName"
                class="form-control" maxlength="50" placeholder="请输入客户姓名"/>
     </div>
-    <div style="height: 69px" class="col-md-6">
+    <div class="col-md-6" style="padding-bottom: 1%">
         <label style="margin-top: 10px;margin-left: 5px" >
             客户性别<span style="color: red">*</span>
         </label>
@@ -148,7 +150,7 @@
     </div>
     </form>
 </div>
-<div style="width: 600px;margin-left: 30px;margin-top: 520px;margin-bottom: 50px" class="form-actions">
+<div class="col-md-12" style="padding: 0;margin-top: 1%">
     <button id="saveNewClient" style="background-color: #2ae2ff" type="button" class="btn">
         <i class="fa fa-check"></i> 保存
     </button>
