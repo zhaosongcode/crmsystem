@@ -13,8 +13,8 @@
         margin-left: 10px;
     }
 </style>
-<div class="panel-heading" style="background-color: #1bd3ff;">
-    <h3 class="panel-title" style="font-size: 15px;margin-left: 10px">系统管理——<a href="javascript:void(0);" onclick="topage('role/list')">角色管理</a>——<a href="javascript:void(0);" onclick="topage('role/add')">角色新增</a></h3>
+<div class="col-md-12" style="background-color: #1bd3ff;padding-left: 1%;margin-top: 1%">
+    <h3>系统管理——<a href="javascript:void(0);" onclick="topage('role/list')">角色管理</a>——<a href="javascript:void(0);" onclick="topage('role/add')">角色新增</a></h3>
 </div>
 
 <!--隐藏域，存储图标信息-->
@@ -22,9 +22,11 @@
 </div>
 
 
-<h4 style="margin-left: 40px" class="form-section">角色信息</h4>
-<div style="margin-left: 30px">
-    <form method="post" id="addForm" autocomplete="off">
+<div class="col-md-12" style="background-color: #4be4c5;margin-top: 2%">
+    <h4>角色信息</h4>
+</div>
+<div class="col-md-12" style="background-color: white;padding-bottom: 1%">
+    <form method="post" id="addForm" role="form" autocomplete="off">
         <div class="col-md-6">
             <label style="margin-top: 10px;margin-left: 5px" >
                 角色名称<span style="color: red">*</span>
@@ -52,7 +54,7 @@
 
     </form>
 </div>
-<div style="width: 600px;margin-left: 30px;margin-bottom: 50px" class="form-actions">
+<div class="col-md-12" style="padding: 0;margin-top: 1%">
     <button id="saveNewRole" style="background-color: #2ae2ff" type="button" class="btn">
         <i class="fa fa-check"></i> 保存
     </button>
