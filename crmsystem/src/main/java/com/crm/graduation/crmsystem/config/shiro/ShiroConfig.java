@@ -1,6 +1,7 @@
 package com.crm.graduation.crmsystem.config.shiro;
 
 import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
+import com.crm.graduation.crmsystem.property.RedisProperty;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
@@ -22,6 +23,7 @@ import org.crazycake.shiro.RedisSessionDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
@@ -35,6 +37,7 @@ import java.util.Properties;
  * shiro配置类
  */
 @Configuration
+@EnableConfigurationProperties(RedisProperty.class)
 public class ShiroConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(ShiroConfig.class);
@@ -238,13 +241,13 @@ public class ShiroConfig {
         return redisCacheManager;
     }
     @Bean(name = "redisManager")
-    public RedisManager redisManager(@Qualifier("jedisPoolConfig") JedisPoolConfig jedisPoolConfig){
+    public RedisManager redisManager(@Qualifier("jedisPoolConfig") JedisPoolConfig jedisPoolConfig, RedisProperty redisProperty){
         RedisManager redisManager = new RedisManager();
-        redisManager.setHost("127.0.0.1");
+        redisManager.setHost(redisProperty.getHost());
         redisManager.setJedisPoolConfig(jedisPoolConfig);
-        redisManager.setPort(6379);
+        redisManager.setPort(redisProperty.getPort());
         redisManager.setTimeout(3000);
-        //redisManager.setPassword("229247");
+        redisManager.setPassword(redisProperty.getPassword());
         return redisManager;
     }
 
