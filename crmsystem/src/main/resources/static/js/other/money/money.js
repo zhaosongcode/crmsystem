@@ -26,7 +26,8 @@ function money() {
         dataType : "json",
         success : function (data) {
             if(data == "success"){
-                window.location.href="index";
+                layer.msg("充值成功!");
+                setTimeout("window.location.href=\"index\";",2000);
             }
         },
         error : function () {
@@ -44,8 +45,8 @@ function check() {
         layer.msg("请正确输入银行卡号!");
         bankNum.val("");
         return false;
-    }else if(bankType,val()==null || bankType.val()==undefined || bankType.val().trim()==""){
-        layer,msg("请选择银行类型!");
+    }else if(bankType.val()==null || bankType.val()==undefined || bankType.val().trim()==""){
+        layer.msg("请选择银行类型!");
         return false;
     }else if(moneyNum.val()==null || moneyNum.val()==undefined || moneyNum.val().trim()==""){
         layer.msg("请正确输入充值金额!");

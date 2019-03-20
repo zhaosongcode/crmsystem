@@ -1,6 +1,9 @@
 package com.crm.graduation.crmsystem.utils;
 
 
+import com.crm.graduation.crmsystem.entity.system.user.CrmUser;
+import com.crm.graduation.crmsystem.model.Consts.Consts;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.crypto.hash.SimpleHash;
 
 import java.text.DecimalFormat;

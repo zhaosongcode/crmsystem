@@ -28,6 +28,7 @@
 
 <div class="col-md-12" style="background-color: white;padding-top: 1%;padding-bottom: 1%">
     <form role="form" id="moneySubmitForm">
+        <input type="hidden" th:value="${session.user.userId}" name="userId" />
     <div class="col-md-6" style="margin-top: 1%">
         <span style="color: red">*</span><label>银行卡号</label>
         <input class="form-control" name="bankNum" id="bankNum" placeholder="请填写银行卡号" />

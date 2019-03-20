@@ -1,7 +1,10 @@
 package com.crm.graduation.crmsystem.controller.other;
 
+import com.crm.graduation.crmsystem.controller.system.BaseController;
 import com.crm.graduation.crmsystem.model.vo.other.ChargingVO;
 import com.crm.graduation.crmsystem.service.other.CrmOtherChargingsystemService;
+import com.crm.graduation.crmsystem.service.other.CrmTopUpService;
+import com.crm.graduation.crmsystem.utils.Tools;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +22,9 @@ public class CrmOtherChargingsystemController {
 
     @Resource
     private CrmOtherChargingsystemService crmOtherChargingsystemService;
+
+    @Resource
+    private CrmTopUpService crmTopUpService;
 
     /**
      * 跳转充值页面
@@ -41,10 +47,15 @@ public class CrmOtherChargingsystemController {
     @ResponseBody
     public String moneydo(@RequestParam Map<String, String> parms){
         String mess = "fail";
+        String userId = parms.get("userId");
         if(parms != null){
-            String bankNum = parms.get("bankNum");
-            String bankType = parms.get("bankType");
-            String moneyNum = parms.get("moneyNum");
+            try {
+                mess = crmTopUpService.toup(parms,userId);
+                return mess;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return mess;
+            }
         }
         return mess;
     }
