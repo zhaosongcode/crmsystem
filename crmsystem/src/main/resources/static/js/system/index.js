@@ -154,9 +154,9 @@ function createWebScoket(){
         //服务器地址
         //websocket = new WebSocket("ws://39.96.47.197:8080/crmsystem/websocket?userId="+userId);
         //本地测试地址
-        websocket = new WebSocket("ws://localhost:8001/crmsystem/websocket?userId="+userId);
+        //websocket = new WebSocket("ws://localhost:8001/crmsystem/websocket?userId="+userId);
         //局域网测试
-        //websocket = new WebSocket("ws://106.13.115.228:8001/crmsystem/websocket?userId="+userId);
+        websocket = new WebSocket("ws://106.13.115.228:8001/crmsystem/websocket?userId="+userId);
     }
     else{
         alert('不支持webscorket!')

@@ -28,8 +28,8 @@
         margin-left: 10px;
     }
 </style>
-<div class="panel-heading" style="background-color: #1bd3ff;width: 100%;margin-top: -1.7%">
-    <h3 class="panel-title" style="font-size: 15px;margin-left: 10px">其他管理——<a href="javascript:void(0);" onclick="topage('other/feedback')">意见反馈</a></h3>
+<div class="col-md-12" style="background-color: #1bd3ff;padding-left: 1%;margin-top: 1%">
+    <h3>其他管理——<a href="javascript:void(0);" onclick="topage('other/feedback')">意见反馈</a></h3>
 </div>
 
 <!--隐藏域，存储图标信息-->
@@ -37,8 +37,10 @@
 </div>
 
 <!--邮件布局-->
-<h4 style="margin-left: 40px" class="form-section">您的反馈我们将尽快处理，请关注邮箱的最新动态</h4>
-<div style="margin-top: 20px" class="row p-b-10 m-l-10">
+<div class="col-md-12" style="background-color: #4be4c5;margin-top: 2%">
+    <h4>您的反馈我们将尽快处理，请注意邮件查询</h4>
+</div>
+<div class="col-md-12" style="background-color: white;padding-top: 1%;padding-bottom: 1%">
     <form id="feedbackForm" role="form">
         <input type="hidden" id="feedbackUserId" name="userId" />
         <div class="col-md-6">
@@ -49,7 +51,7 @@
                    class="form-control" maxlength="50" placeholder="请输入反馈主题信息"/>
         </div>
         <br/><br/><br/><br/>
-        <div style="height: 69px" class="col-md-6">
+        <div style="padding-bottom: 1%" class="col-md-6">
             <label style="margin-top: 10px;margin-left: 5px" >
                 反馈类型<span style="color: red">*</span>
             </label>
@@ -66,8 +68,8 @@
         </div>
         <input type="hidden" id="feedbackDesc" name="feedbackDesc" />
 
-        <div style="margin-top:20px;margin-left:45%" class="col-md-12">
-            <button style="margin-left: 15px" onclick="sendFeedback()" type="button" class="btn btn-success waves-effect m-l-10">发送
+        <div class="col-md-12" style="padding : 0;margin-top : 1%">
+            <button onclick="sendFeedback()" type="button" class="btn btn-success waves-effect m-l-10">发送
             </button>
         </div>
     </form>
