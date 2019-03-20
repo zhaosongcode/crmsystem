@@ -5,8 +5,11 @@ import com.crm.graduation.crmsystem.service.other.CrmOtherChargingsystemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/main/other")
@@ -29,5 +32,20 @@ public class CrmOtherChargingsystemController {
             e.printStackTrace();
         }
         return VIEW;
+    }
+
+    /**
+     * 充值逻辑
+     */
+    @RequestMapping("/moneydo")
+    @ResponseBody
+    public String moneydo(@RequestParam Map<String, String> parms){
+        String mess = "fail";
+        if(parms != null){
+            String bankNum = parms.get("bankNum");
+            String bankType = parms.get("bankType");
+            String moneyNum = parms.get("moneyNum");
+        }
+        return mess;
     }
 }

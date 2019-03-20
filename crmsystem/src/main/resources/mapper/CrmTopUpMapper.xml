@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.graduation.crmsystem.dao.mapper.other.CrmTopUpMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.graduation.crmsystem.entity.other.CrmTopUp" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="top_up_id" property="topUpId" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="time" property="time" jdbcType="TIMESTAMP" />
+    <result column="bank_id" property="bankId" jdbcType="VARCHAR" />
+    <result column="top_up_num" property="topUpNum" jdbcType="VARCHAR" />
+    <result column="bank_num" property="bankNum" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

@@ -34,7 +34,7 @@
 
         // 服务器统一请求接口路径
 		//本地serverUrl: "http://localhost:8001/crmsystem/main/ueditor"
-        , serverUrl: "http://106.13.115.228:8001/crmsystem/main/ueditor"//URL + "jsp/controller.jsp"
+        , serverUrl: "http://localhost:8001/crmsystem/main/ueditor"//URL + "jsp/controller.jsp"
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的重新定义
         , toolbars: [[

@@ -67,7 +67,7 @@
             oracle 配置
             <generatedKey column="id" sqlStatement="select SEQ_{1}.nextval from dual" identity="false" type="pre"/>
         </table>-->
-        <table tableName="crm_message"></table>
+        <table tableName="crm_top_up"></table>
         
     </context>
 </generatorConfiguration>
