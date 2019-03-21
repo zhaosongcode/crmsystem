@@ -39,7 +39,10 @@
 
     var clientIcon = [[${client.iconName}]]
     if(CommnUtil.notNull(clientCountry)){
-        $("#imgClientIcon").attr("src","http://localhost:8001/crmsystem/uploadImages/"+clientIcon);
+        //本地
+        //$("#imgClientIcon").attr("src","http://localhost:8001/crmsystem/uploadImages/"+clientIcon);
+        //服务器
+        $("#imgClientIcon").attr("src","http://106.13.115.228:8001/crmsystem/uploadImages/"+clientIcon);
         $("#seledIconName").val(clientIcon)
     }
     /*]]>*/

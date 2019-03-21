@@ -44,7 +44,7 @@ public class CrmUeditorController {
 //            e.printStackTrace();
 //            return "error";
 //        }
-        request.setCharacterEncoding( "utf-8" );
+        /*request.setCharacterEncoding( "utf-8" );
         response.setHeader("Content-Type" , "text/html");
 
         String realPath = request.getSession().getServletContext().getRealPath("upload");
@@ -54,6 +54,6 @@ public class CrmUeditorController {
         logger.info("ueditor后台配置"+exec);
 
         out.flush();
-        out.write(exec);
+        out.write(exec);*/
     }
 }

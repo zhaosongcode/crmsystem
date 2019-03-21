@@ -6,32 +6,33 @@
   "imageCompressEnable": true,
   "imageCompressBorder": 1600,
   "imageInsertAlign": "none",
-  "imageUrlPrefix": "http://127.0.0.1:8080/uploadImages",
-  "imagePathFormat": "/ueditor/jsp/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}",
+  //"imageUrlPrefix": "http://127.0.0.1:8080/uploadImages",
+  "imageUrlPrefix": "http://106.13.115.228:8001/uploadImages",
+  "imagePathFormat": "/home/crmsystem/images/{yyyy}{mm}{dd}/{time}{rand:6}",
 
   "scrawlActionName": "uploadscrawl",
   "scrawlFieldName": "upfile",
-  "scrawlPathFormat": "/ueditor/jsp/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}",
+  "scrawlPathFormat": "/home/crmsystem/images/{yyyy}{mm}{dd}/{time}{rand:6}",
   "scrawlMaxSize": 2048000,
   "scrawlUrlPrefix": "",
   "scrawlInsertAlign": "none",
 
   "snapscreenActionName": "uploadimage",
-  "snapscreenPathFormat": "/ueditor/jsp/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}",
+  "snapscreenPathFormat": "/home/crmsystem/images/{yyyy}{mm}{dd}/{time}{rand:6}",
   "snapscreenUrlPrefix": "",
   "snapscreenInsertAlign": "none",
 
-  "catcherLocalDomain": ["127.0.0.1", "localhost", "img.baidu.com"],
+  "catcherLocalDomain": ["106.13.115.228", "localhost", "img.baidu.com"],
   "catcherActionName": "catchimage",
   "catcherFieldName": "source",
-  "catcherPathFormat": "/ueditor/jsp/upload/image/{yyyy}{mm}{dd}/{time}{rand:6}",
+  "catcherPathFormat": "/home/crmsystem/images/{yyyy}{mm}{dd}/{time}{rand:6}",
   "catcherUrlPrefix": "",
   "catcherMaxSize": 2048000,
   "catcherAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"],
 
   "videoActionName": "uploadvideo",
   "videoFieldName": "upfile",
-  "videoPathFormat": "/ueditor/jsp/upload/video/{yyyy}{mm}{dd}/{time}{rand:6}",
+  "videoPathFormat": "/home/crmsystem/images/{yyyy}{mm}{dd}/{time}{rand:6}",
   "videoUrlPrefix": "",
   "videoMaxSize": 102400000,
   "videoAllowFiles": [
@@ -40,7 +41,7 @@
 
   "fileActionName": "uploadfile",
   "fileFieldName": "upfile",
-  "filePathFormat": "/ueditor/jsp/upload/file/{yyyy}{mm}{dd}/{time}{rand:6}",
+  "filePathFormat": "/home/crmsystem/images/{yyyy}{mm}{dd}/{time}{rand:6}",
   "fileUrlPrefix": "",
   "fileMaxSize": 51200000,
   "fileAllowFiles": [
@@ -52,14 +53,14 @@
   ],
 
   "imageManagerActionName": "listimage",
-  "imageManagerListPath": "/ueditor/jsp/upload/image/",
+  "imageManagerListPath": "/home/crmsystem/images/",
   "imageManagerListSize": 20,
   "imageManagerUrlPrefix": "",
   "imageManagerInsertAlign": "none",
   "imageManagerAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"],
 
   "fileManagerActionName": "listfile",
-  "fileManagerListPath": "/ueditor/jsp/upload/file/",
+  "fileManagerListPath": "/home/crmsystem/images/",
   "fileManagerUrlPrefix": "",
   "fileManagerListSize": 20,
   "fileManagerAllowFiles": [

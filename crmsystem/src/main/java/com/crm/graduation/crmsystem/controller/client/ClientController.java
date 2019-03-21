@@ -150,7 +150,6 @@ public class ClientController {
             message = "sizeError"; // 图片尺寸不合适
             return ResultDto.error(message);
         }
-        String returnUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() +"/upload/";//存储路径
         String path = request.getSession().getServletContext().getRealPath("upload"); //文件存储位置
         String fileF = fileName.substring(fileName.lastIndexOf("."), fileName.length());//文件后缀
         fileName=new Date().getTime()+"_"+new Random().nextInt(1000)+fileF;//新的文件名
@@ -181,7 +180,7 @@ public class ClientController {
             //保存图片
             String iconName = clientVo.getIconName();
             String srcPath = request.getSession().getServletContext().getRealPath("upload");
-            crmClientService.copyFile1(srcPath+"/"+iconName,Consts.UPLOAD_SAVE_ADDRESS+iconName);
+            crmClientService.copyFile1(srcPath+"/"+iconName,Consts.UPLOAD_SAVE_SERVERADDRESS+iconName);
             //保存新用户
             crmClientService.addClient(clientVo);
             return ResultDto.success();

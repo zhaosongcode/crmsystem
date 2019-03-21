@@ -141,7 +141,10 @@ $("#seledIcon").on("change", function () {
             if (data.code == "0") {
                 // 上传成功data为图片路径
                 var clientIcon = data.obj;
-                var imgClientIcon = 'http://localhost:8001/crmsystem/upload/' + clientIcon;
+                //本地测试
+                //var imgClientIcon = 'http://localhost:8001/crmsystem/upload/' + clientIcon;
+                //服务器
+                var imgClientIcon = 'http://106.13.115.228:8001/crmsystem/upload/' + clientIcon;
                 $('#imgClientIcon').attr('src', imgClientIcon);
                 $("#seledIconName").val(clientIcon)
             } else if (data.obj == "fileIsEmpty") {

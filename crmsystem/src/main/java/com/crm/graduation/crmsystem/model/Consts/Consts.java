@@ -43,8 +43,13 @@ public class Consts {
     public static final String ADMIN_ID = "03be0258222e40d9a64f5c400bca11e9";
 
     /**
-     * 实际保存图片路径
+     * 本地实际保存图片路径
      */
     public static final String UPLOAD_SAVE_ADDRESS = "D:/image/upload/";
+
+    /**
+     * 服务器实际保存图片路径
+     */
+    public static final String UPLOAD_SAVE_SERVERADDRESS = "/home/crmsystem/images/";
 
 }

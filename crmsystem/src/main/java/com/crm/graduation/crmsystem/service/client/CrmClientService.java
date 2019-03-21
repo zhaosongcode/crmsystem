@@ -309,7 +309,7 @@ public class CrmClientService {
                     //变化了执行复制保存图片并更新
                     String iconName = newClientVo.getIconName();
                     String srcPath = request.getSession().getServletContext().getRealPath("upload");
-                    copyFile1(srcPath+"/"+iconName, Consts.UPLOAD_SAVE_ADDRESS+iconName);
+                    copyFile1(srcPath+"/"+iconName, Consts.UPLOAD_SAVE_SERVERADDRESS+iconName);
                 }
                 BeanUtils.copyProperties(newClientVo,crmClient);
                 crmClient.setClientIcon(newClientVo.getIconName());
