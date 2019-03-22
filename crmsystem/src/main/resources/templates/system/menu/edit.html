@@ -1,0 +1,63 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<script type="text/javascript" th:inline="javascript" xmlns:th="http://www.w3.org/1999/xhtml">
+    /*<![CDATA[*/
+    var menu = [[${menu}]];
+    /*]]>*/
+</script>
+
+    <div class="col-md-12" style="background-color: #1bd3ff;padding-left: 1%;margin-top: 1%">
+        <h3>系统管理——<a href="javascript:void(0);" onclick="topage('menu/list')">菜单管理</a>——<a href="javascript:void(0);" onclick="topage('menu/edit')">菜单修改</a></h3>
+    </div>
+
+    <div class="col-md-12" style="background-color: #4be4c5;margin-top: 2%">
+        <h4>菜单信息</h4>
+    </div>
+
+    <div class="col-md-12" style="background-color: white;padding-bottom: 1%">
+        <form method="post" id="addForm" role="form" autocomplete="off">
+            <input type="hidden" name="menuId" th:value="${menu.menuId}" />
+            <div class="col-md-6">
+                <label style="margin-top: 10px;margin-left: 5px" >
+                    菜单名称<span style="color: red">*</span>
+                </label>
+                <input th:value="${menu.menuName}" style="background-color: #FFFFFF" type="text" id="menuName" name="menuName"
+                       class="form-control" maxlength="50" placeholder="请输入菜单名称"/>
+            </div>
+
+            <div class="col-md-6" style="padding-bottom: 1%">
+                <label style="margin-top: 10px;margin-left: 5px" >
+                    父菜单
+                </label>
+                <select class="form-control" id="paMenu" name="paMenu">
+                    <option th:each="paMenu : ${paMenus}" th:text="${paMenu.permissionName}" th:value="${paMenu.permissionId}"></option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label style="margin-top: 10px;margin-left: 5px" >
+                    菜单路径
+                </label>
+                <input th:value="${menu.menuUrl}" style="background-color: #FFFFFF" type="text" id="menuUrl" name="menuUrl"
+                       class="form-control" maxlength="50" placeholder="请输入菜单路径"/>
+            </div>
+
+            <div class="col-md-6">
+                <label style="margin-top: 10px;margin-left: 5px" >
+                    菜单图标<span style="color: red">*</span>
+                </label>
+                <input th:value="${menu.menuIcon}" style="background-color: #FFFFFF" type="text" id="menuIcon" name="menuIcon"
+                       class="form-control" maxlength="50" placeholder="请输入菜单图标"/>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="col-md-12" style="padding: 0;margin-top: 1%">
+        <button onclick="saveMenu()" id="saveNewRole" style="background-color: #2ae2ff" type="button" class="btn">
+            <i class="fa fa-check"></i> 修改
+        </button>
+        <button type="button" onclick="topage('menu/list')" class="btn"><i class="fa fa-close"></i>取消</button>
+    </div>
+    <script type="text/javascript" th:src="@{/js/system/menu/edit.js}"></script>
+
+</html>
