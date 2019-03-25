@@ -67,4 +67,15 @@
     <result column="top_up_num" jdbcType="VARCHAR" property="topUpNum" />
     <result column="bank_num" jdbcType="VARCHAR" property="bankNum" />
   </resultMap>
+  <resultMap id="BaseResultMap" type="com.generator.model.CrmTopUp">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="top_up_id" jdbcType="VARCHAR" property="topUpId" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="time" jdbcType="TIMESTAMP" property="time" />
+    <result column="bank_id" jdbcType="VARCHAR" property="bankId" />
+    <result column="top_up_num" jdbcType="VARCHAR" property="topUpNum" />
+    <result column="bank_num" jdbcType="VARCHAR" property="bankNum" />
+  </resultMap>
 </mapper>
