@@ -1,7 +1,9 @@
 package com.crm.graduation.crmsystem.service.system.menu;
 
 import com.crm.graduation.crmsystem.dao.mapper.user.CrmPermissionMapper;
+import com.crm.graduation.crmsystem.dao.mapper.user.CrmRolePermissionMapper;
 import com.crm.graduation.crmsystem.entity.system.permission.CrmPermission;
+import com.crm.graduation.crmsystem.entity.system.user.CrmRolePermission;
 import com.crm.graduation.crmsystem.model.vo.system.menu.MenuVo;
 import com.crm.graduation.crmsystem.utils.Tools;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class CrmSystemMenuService {
 
     @Resource
     private CrmPermissionMapper crmPermissionMapper;
+
+    @Resource
+    private CrmRolePermissionMapper rolePermissionMapper;
 
     /**
      * 查询列表
@@ -44,6 +49,13 @@ public class CrmSystemMenuService {
         CrmPermission crmPermission = crmPermissionMapper.selectByPrimaryKey(permissionId);
         if(crmPermission != null){
             crmPermissionMapper.deleteByPrimaryKey(permissionId);
+            //然后根据permissionId删除角色权限表信息
+            CrmRolePermission crmRolePermission = new CrmRolePermission();
+            crmRolePermission.setPermissionId(permissionId);
+            List<CrmRolePermission> select = rolePermissionMapper.select(crmRolePermission);
+            if(select.size()>0){
+                rolePermissionMapper.delete(crmRolePermission);
+            }
             mess = "success";
         }
         return mess;
@@ -60,6 +72,13 @@ public class CrmSystemMenuService {
             CrmPermission crmPermission = crmPermissionMapper.selectByPrimaryKey(permissionId);
             if(crmPermission != null){
                 crmPermissionMapper.deleteByPrimaryKey(permissionId);
+                //然后根据permissionId删除角色权限表信息
+                CrmRolePermission crmRolePermission = new CrmRolePermission();
+                crmRolePermission.setPermissionId(permissionId);
+                List<CrmRolePermission> select = rolePermissionMapper.select(crmRolePermission);
+                if(select.size()>0){
+                    rolePermissionMapper.delete(crmRolePermission);
+                }
             }
         }
         mess = "success";
