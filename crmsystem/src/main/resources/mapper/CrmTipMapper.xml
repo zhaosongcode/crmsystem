@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.crm.graduation.crmsystem.dao.mapper.route.tip.CrmTipMapper" >
+  <resultMap id="BaseResultMap" type="com.crm.graduation.crmsystem.entity.route.tip.CrmTip" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="tip_id" property="tipId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="tip_time" property="tipTime" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="tip_content" property="tipContent" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="VARCHAR" />
+    <result column="is_close" property="isClose" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>
