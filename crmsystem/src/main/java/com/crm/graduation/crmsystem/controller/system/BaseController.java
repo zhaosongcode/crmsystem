@@ -58,6 +58,7 @@ public class BaseController {
      */
     protected String getCurrenUserId(){
         Session session = SecurityUtils.getSubject().getSession();
+        //热部署会导致类型转换失败
         CrmUser sessionUser = (CrmUser) session.getAttribute(Consts.SESSION_USER);
         String userId = sessionUser.getUserId();
         return userId;

@@ -1,5 +1,6 @@
 package com.crm.graduation.crmsystem.controller.order;
 
+import com.crm.graduation.crmsystem.controller.system.BaseController;
 import com.crm.graduation.crmsystem.entity.dict.CrmDataDict;
 import com.crm.graduation.crmsystem.exceptions.OrderStatusErrorException;
 import com.crm.graduation.crmsystem.model.Consts.OrderConst;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -21,7 +23,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/main/order")
-public class CrmOrderController {
+public class CrmOrderController extends BaseController {
 
     @Resource
     private CrmDictService crmDictService;
@@ -124,5 +126,46 @@ public class CrmOrderController {
             e.printStackTrace();
             return ResultDto.error("fail");
         }
+    }
+
+    /**
+     * 跳转添加页面
+     */
+    @RequestMapping("/toAdd")
+    public String toAdd(ModelMap modelMap){
+        try {
+            String userId = getCurrenUserId();
+            //字典部分
+            //查询订单类型字典集合
+            List<CrmDataDict> type = getDict(OrderConst.ORDER_TYPE_CODE);
+            modelMap.addAttribute("type",type);
+            //查询订单状态字典集合
+            List<CrmDataDict> status = getDict(OrderConst.ORDER_STATUS_CODE);
+            modelMap.addAttribute("status",status);
+            //2.查询出用户所有的客户
+            List<OrClVO> orCl = crmClientService.getAllClient(userId);
+            modelMap.addAttribute("orCl",orCl);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "order/add";
+    }
+
+    /**
+     * 添加逻辑
+     * @param orderVO
+     * @return
+     */
+    @RequestMapping("/addDo")
+    @ResponseBody
+    public String addDo(OrderVO orderVO){
+        String userId = getCurrenUserId();
+        String mess = "fail";
+        try {
+            mess = crmOrderService.addDo(orderVO,userId);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return mess;
     }
 }

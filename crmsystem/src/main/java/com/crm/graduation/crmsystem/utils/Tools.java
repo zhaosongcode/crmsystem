@@ -90,4 +90,13 @@ public class Tools {
         String encyPassword = simpleHashs.toHex();
         return encyPassword;
     }
+
+    /**
+     * 六位格式化
+     */
+    public static String tranCode(Integer count){
+        DecimalFormat decimalFormat = new DecimalFormat("000000");
+        String format = decimalFormat.format(count);
+        return format;
+    }
 }

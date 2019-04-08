@@ -151,4 +151,34 @@ public class CrmOrderService {
         return message;
     }
 
+    /**
+     * 新增订单
+     * @param orderVO
+     * @return
+     * @throws Exception
+     */
+    public String addDo(OrderVO orderVO, String userId)throws Exception {
+        String mess = "fail";
+        CrmOrder crmOrder = new CrmOrder();
+        crmOrder.setOrderId(Tools.get32UUID());
+        //订单编号原则：OD + 六位数字（按数据量）
+        String orderCode = "OD";
+        //查询数量
+        int i = crmOrderMapper.selectCount(new CrmOrder());
+        i++;
+        String s = Tools.tranCode(i);
+        orderCode += s;
+        crmOrder.setOrderCode(orderCode);//订单编号
+        crmOrder.setOrderType(orderVO.getOrderType());
+        crmOrder.setOrderStatus(orderVO.getOrderStatus());
+        crmOrder.setClientId(orderVO.getClientId());
+        crmOrder.setIsDelete(0);
+        crmOrder.setCreateTime(new Date());
+        crmOrder.setUserId(userId);
+        int insert = crmOrderMapper.insert(crmOrder);
+        if(insert>0){
+            mess = "success";
+        }
+        return mess;
+    }
 }
