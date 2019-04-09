@@ -1,0 +1,67 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<script th:src="@{/js/route/tip/edit.js}"></script>
+<script type="text/javascript" th:inline="javascript" xmlns:th="http://www.w3.org/1999/xhtml">
+    /*<![CDATA[*/
+    var isClose = [[${tip.isClose}]];
+    if(CommnUtil.notNull(isClose)){
+        $("#isClose").val(isClose).trigger("change");
+    }else{
+        $("#isClose").val(null).trigger("change");
+    }
+    /*]]>*/
+</script>
+<style>
+    .form-section{
+        color: #0b94ea;
+        margin: 30px 0px 15px 0px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid #eee;
+        margin-left: 10px;
+    }
+</style>
+<div class="col-md-12" style="background-color: #1bd3ff;padding-left: 1%;margin-top: 1%">
+    <h3>行程管理——<a href="javascript:void(0);" onclick="topage('route/tip/list')">提醒事项</a>——<a href="javascript:void(0);" th:onclick="toEdit([[${tip.tipId}]])">事项修改</a></h3>
+</div>
+
+<!--隐藏域，存储图标信息-->
+<div style="display:none;">
+</div>
+
+
+<div class="col-md-12" style="background-color: #4be4c5;margin-top: 2%">
+    <h4>事项信息</h4>
+</div>
+<div class="col-md-12" style="background-color: white">
+    <form method="post" id="tipAddForm" autocomplete="off">
+        <input type="hidden" name="tipId" th:value="${tip.tipId}" />
+        <div class="col-md-6" style="padding-bottom: 1%">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                事项内容
+            </label>
+            <input class="form-control" th:value="${tip.tipContent}" name="tipContent" id="tipContent" />
+        </div>
+        <div class="col-md-6" style="padding-bottom: 1%">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                提醒时间
+            </label>
+            <input class="form-control" th:value="${tip.tTime}" name="tTime" id="tipTime" />
+        </div>
+        <div class="col-md-6" style="padding-bottom: 1%">
+            <label style="margin-top: 10px;margin-left: 5px" >
+                是否关闭
+            </label>
+            <select id="isClose" name="isClose" class="form-control">
+                <option value="0">否</option>
+                <option value="1">是</option>
+            </select>
+        </div>
+    </form>
+</div>
+<div class="col-md-12" style="padding: 0;margin-top: 1%">
+    <button onclick="addSub()" id="saveOrder" style="background-color: #2ae2ff" type="button" class="btn">
+        <i class="fa fa-check"></i> 保存
+    </button>
+    <button type="button" onclick="topage('route/tip/list')" class="btn"><i class="fa fa-close"></i>取消</button>
+</div>
+
+</html>

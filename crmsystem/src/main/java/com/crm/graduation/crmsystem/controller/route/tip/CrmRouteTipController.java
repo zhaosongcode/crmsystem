@@ -80,4 +80,34 @@ public class CrmRouteTipController extends BaseController {
         }
         return mess;
     }
+
+    /**
+     * 跳转编辑页面
+     */
+    @RequestMapping("edit")
+    public String edit(String tipId, ModelMap modelMap){
+        //查询单个提事项
+        try {
+            CrmTip crmTip = crmRouteTipService.getTipById(tipId);
+            modelMap.addAttribute("tip",crmTip);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return VIEW + "edit";
+    }
+
+    /**
+     * 修改保存
+     */
+    @ResponseBody
+    @RequestMapping("editDo")
+    public String editDo(CrmTip crmTip){
+        String mess = "fail";
+        try {
+            mess = crmRouteTipService.editDo(crmTip);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mess;
+    }
 }

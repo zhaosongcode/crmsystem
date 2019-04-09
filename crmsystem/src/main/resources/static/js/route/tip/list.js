@@ -84,3 +84,18 @@ function batchDelete() {
         layer.msg("请选择操作项")
     }
 }
+
+function editorTip(tipId) {
+    $.ajax({
+        url : "route/tip/edit",
+        data : {
+            tipId : tipId
+        },
+        success : function (data) {
+            $("#contentdiv").html(data);
+        },
+        error : function () {
+            layer.msg("后台系统异常");
+        }
+    })
+}

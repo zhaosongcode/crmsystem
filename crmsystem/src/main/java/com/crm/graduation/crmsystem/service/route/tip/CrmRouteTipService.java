@@ -109,4 +109,49 @@ public class CrmRouteTipService {
         }
         return "success";
     }
+
+    /**
+     * 查询单个事项
+     * @param tipId
+     * @return
+     * @throws Exception
+     */
+    public CrmTip getTipById(String tipId)throws Exception {
+        CrmTip crmTip = crmTipMapper.selectByPrimaryKey(tipId);
+        crmTip.setTTime(Tools.tranTime(crmTip.getTipTime()));
+        return crmTip;
+    }
+
+    /**
+     * 修改保存
+     * @param crmTip
+     * @return
+     * @throws Exception
+     */
+    public String editDo(CrmTip crmTip)throws Exception {
+        String mess = "fail";
+        CrmTip crmTip1 = crmTipMapper.selectByPrimaryKey(crmTip.getTipId());
+        if(crmTip1 != null){
+            String isClose1 = crmTip1.getIsClose();
+            String isClose = crmTip.getIsClose();
+            String tTime = crmTip.getTTime();
+            String tipContent = crmTip.getTipContent();
+            crmTip1.setTipTime(Tools.StringTimeToDate(tTime));
+            crmTip1.setIsClose(isClose);
+            crmTip1.setTipContent(tipContent);
+            int i = crmTipMapper.updateByPrimaryKey(crmTip1);
+            if(i>0){
+                mess = "success";
+                if(!isClose.equals(isClose1) && "0".equals(isClose1)){
+                    mess += ",1,";
+                    mess+= crmTip1.getTipId();
+                }
+                if(!isClose.equals(isClose1) && "1".equals(isClose1)){
+                    mess += ",0,";
+                    mess += crmTip1.getTipId();
+                }
+            }
+        }
+        return mess;
+    }
 }
